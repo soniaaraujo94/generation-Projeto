@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="classes.HomemTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-05-27T18:00:32" hostname="DESKTOP-TE0QRK7" time="0.042">
+  <properties/>
+  <testcase name="tmb()" classname="classes.HomemTest" time="0.042"/>
+  <system-out><![CDATA[
+Taxa metabólica: 1815,00
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
