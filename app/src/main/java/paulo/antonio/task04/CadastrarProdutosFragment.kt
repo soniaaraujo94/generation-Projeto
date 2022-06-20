@@ -47,15 +47,15 @@ class CadastrarProdutosFragment : Fragment() {
     }
 
     private fun inserirDados() {
-        val imagem = binding.inputImg.toString()
-        val nomeProduto = binding.inputProduto.text.toString()
-        val pesoGrama = binding.inputPeso.text.toString()
-        val valorGrama = binding.inputValor.text.toString()
+        val imgProd = "agsduygasd"
+        val nomeProd = binding.inputProduto.text.toString()
+        val pesoProd = binding.inputPeso.text.toString()
+        val valorProd = binding.inputValor.text.toString()
         val descProd = binding.inputDescricao.text.toString()
         val categoria = Categoria(categoriaSelecionada, null, null)
 
-        if (validarCampos(nomeProduto, pesoGrama, valorGrama, descProd)) {
-            val produtos = Produtos(0, imagem, nomeProduto, pesoGrama, valorGrama, descProd, categoria)
+        if (validarCampos(nomeProd, pesoProd, valorProd, descProd)) {
+            val produtos = Produtos(0, nomeProd, descProd, imgProd, pesoProd, valorProd, categoria)
             mainViewModel.addProduto(produtos)
             Toast.makeText(context, "Produto adicionado", Toast.LENGTH_SHORT).show()
             findNavController().navigate(R.id.action_cadastrarProdutosFragment_to_listagemProdutosFragment)
