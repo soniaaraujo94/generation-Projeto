@@ -23,8 +23,8 @@ class ProdutosAdapter : RecyclerView.Adapter<ProdutosAdapter.ProdutosViewHolder>
         val produto = listProduto[position]
 
         holder.binding.imageProduct.setImageResource(R.drawable.laranja)
-        holder.binding.textNome.text = produto.nomeProduto
-        holder.binding.textValor.text = produto.valorGrama.toString()
+        holder.binding.textNome.text = produto.nomeMarca
+        holder.binding.textValor.text = produto.valor.toString()
     }
 
     override fun getItemCount(): Int {

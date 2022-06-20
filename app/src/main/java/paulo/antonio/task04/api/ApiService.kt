@@ -17,4 +17,7 @@ interface ApiService {
         @Body produtos: Produtos
     ): Response<Produtos>
 
+    @GET("produtos")
+    suspend fun listProdutos() : Response<List<Produtos>>
+
 }

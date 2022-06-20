@@ -19,10 +19,16 @@ class MainViewModel @Inject constructor(
     private val repository: Repository
 ): ViewModel() {
 
-    var _myCategoriaResponse = MutableLiveData<Response<List<Categoria>>>()
+    private var _myCategoriaResponse = MutableLiveData<Response<List<Categoria>>>()
 
     val myCategoriaResponse: LiveData<Response<List<Categoria>>> =
         _myCategoriaResponse
+
+    private var _myProdutoResponse = MutableLiveData<Response<List<Produtos>>>()
+
+    val myProdutosResponse: LiveData<Response<List<Produtos>>> =
+        _myProdutoResponse
+
 
     init {
         //listCategoria()
@@ -34,7 +40,7 @@ class MainViewModel @Inject constructor(
                 val response = repository.listCategoria()
                 _myCategoriaResponse.value = response
             } catch (e: Exception){
-                Log.d("ErroRequisição", e.message.toString())
+                Log.d("Erro Requisição", e.message.toString())
             }
         }
     }
@@ -44,7 +50,18 @@ class MainViewModel @Inject constructor(
             try{
                 repository.addProduto(produtos)
             }catch (e: Exception){
-                Log.d("Erro", e.message.toString())
+                Log.d("Erro Adicionar Produtos", e.message.toString())
+            }
+        }
+    }
+
+    fun listProduto(){
+        viewModelScope.launch {
+            try {
+                val response = repository.listProduto()
+                _myProdutoResponse.value = response
+            }catch (e: Exception){
+                Log.d("Erro Listar Produtos", e.message.toString())
             }
         }
     }

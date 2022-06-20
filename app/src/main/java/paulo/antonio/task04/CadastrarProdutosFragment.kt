@@ -95,7 +95,6 @@ class CadastrarProdutosFragment : Fragment() {
                         id: Long
                     ) {
                         val selected = binding.inputCategoria.selectedItem as Categoria
-
                         categoriaSelecionada = selected.id
                     }
 
