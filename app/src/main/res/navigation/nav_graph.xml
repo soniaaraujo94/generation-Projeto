@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/listagemProdutosFragment">
+    app:startDestination="@id/splashFragment2">
 
     <fragment
         android:id="@+id/listagemProdutosFragment"
@@ -11,8 +11,11 @@
         android:label="fragment_listagem_produtos"
         tools:layout="@layout/fragment_listagem_produtos" >
         <action
-            android:id="@+id/action_listagemProdutosFragment_to_cadastrarProdutosFragment"
-            app:destination="@id/cadastrarProdutosFragment" />
+            android:id="@+id/action_listagemProdutosFragment_to_produtoFragment"
+            app:destination="@id/produtoFragment" />
+        <action
+            android:id="@+id/action_listagemProdutosFragment_to_perfilUsuarioFragment"
+            app:destination="@id/perfilUsuarioFragment" />
     </fragment>
     <fragment
         android:id="@+id/cadastrarProdutosFragment"
@@ -20,9 +23,88 @@
         android:label="fragment_cadastrar_produtos"
         tools:layout="@layout/fragment_cadastrar_produtos" >
         <action
-            android:id="@+id/action_cadastrarProdutosFragment_to_listagemProdutosFragment"
+            android:id="@+id/action_cadastrarProdutosFragment_to_adminProdutoFragment"
+            app:destination="@id/adminProdutoFragment"
+            app:popUpTo="@id/adminProdutoFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment2"
+        android:name="paulo.antonio.task04.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment2_to_acessoFragment"
+            app:destination="@id/acessoFragment"
+            app:popUpTo="@id/splashFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/acessoFragment"
+        android:name="paulo.antonio.task04.AcessoFragment"
+        android:label="fragment_acesso"
+        tools:layout="@layout/fragment_acesso" >
+        <action
+            android:id="@+id/action_acessoFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_acessoFragment_to_cadastroUsuarioFragment"
+            app:destination="@id/cadastroUsuarioFragment" />
+        <action
+            android:id="@+id/action_acessoFragment_to_listagemProdutosFragment"
+            app:destination="@id/listagemProdutosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="paulo.antonio.task04.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_listagemProdutosFragment"
             app:destination="@id/listagemProdutosFragment"
             app:popUpTo="@id/listagemProdutosFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_loginFragment_to_adminFragment3"
+            app:destination="@id/adminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cadastroUsuarioFragment"
+        android:name="paulo.antonio.task04.CadastroUsuarioFragment"
+        android:label="fragment_cadastro_usuario"
+        tools:layout="@layout/fragment_cadastro_usuario" >
+        <action
+            android:id="@+id/action_cadastroUsuarioFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/produtoFragment"
+        android:name="paulo.antonio.task04.ProdutoFragment"
+        android:label="fragment_produto"
+        tools:layout="@layout/fragment_produto" />
+    <fragment
+        android:id="@+id/perfilUsuarioFragment"
+        android:name="paulo.antonio.task04.PerfilUsuarioFragment"
+        android:label="fragment_perfil_usuario"
+        tools:layout="@layout/fragment_perfil_usuario" />
+    <fragment
+        android:id="@+id/adminFragment"
+        android:name="paulo.antonio.task04.AdminFragment"
+        android:label="fragment_admin"
+        tools:layout="@layout/fragment_admin" >
+        <action
+            android:id="@+id/action_adminFragment_to_adminProdutoFragment"
+            app:destination="@id/adminProdutoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/adminProdutoFragment"
+        android:name="paulo.antonio.task04.AdminProdutoFragment"
+        android:label="fragment_admin_produto"
+        tools:layout="@layout/fragment_admin_produto" >
+        <action
+            android:id="@+id/action_adminProdutoFragment_to_cadastrarProdutosFragment"
+            app:destination="@id/cadastrarProdutosFragment" />
     </fragment>
 </navigation>

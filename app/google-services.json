@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "380755220491",
+    "project_id": "app-cesta-feira-d2a17",
+    "storage_bucket": "app-cesta-feira-d2a17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380755220491:android:dc365ff48dc2995f538f0e",
+        "android_client_info": {
+          "package_name": "paulo.antonio.task04"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "380755220491-1b4n3s8phlf2pj1h02qqchbru4pb04p7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmR8d3rcrAk1RaCCLqbTy-8_Z_JblwDk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "380755220491-1b4n3s8phlf2pj1h02qqchbru4pb04p7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
