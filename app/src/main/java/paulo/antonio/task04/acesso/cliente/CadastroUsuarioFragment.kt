@@ -1,4 +1,4 @@
-package paulo.antonio.task04
+package paulo.antonio.task04.acesso.cliente
 
 import android.graphics.Color
 import android.os.Bundle
@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import paulo.antonio.task04.R
 import paulo.antonio.task04.databinding.FragmentCadastroUsuarioBinding
 
 class CadastroUsuarioFragment : Fragment() {

@@ -1,4 +1,4 @@
-package paulo.antonio.task04
+package paulo.antonio.task04.acesso
 
 
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import paulo.antonio.task04.R
 import paulo.antonio.task04.cep.CEP
 import paulo.antonio.task04.cep.RetrofitInitializer
 import paulo.antonio.task04.databinding.FragmentAcessoBinding

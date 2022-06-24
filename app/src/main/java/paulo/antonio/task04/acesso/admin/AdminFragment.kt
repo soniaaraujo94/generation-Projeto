@@ -1,4 +1,4 @@
-package paulo.antonio.task04
+package paulo.antonio.task04.acesso.admin
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,9 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import paulo.antonio.task04.databinding.FragmentAcessoBinding
+import paulo.antonio.task04.R
 import paulo.antonio.task04.databinding.FragmentAdminBinding
-import paulo.antonio.task04.databinding.FragmentListagemProdutosBinding
 
 class AdminFragment : Fragment() {
     private lateinit var binding: FragmentAdminBinding
@@ -22,7 +21,7 @@ class AdminFragment : Fragment() {
         binding = FragmentAdminBinding.inflate(layoutInflater, container, false)
 
         binding.telaProdutos.setOnClickListener {
-            findNavController().navigate(R.id.action_adminFragment_to_adminProdutoFragment)
+            findNavController().navigate(R.id.action_adminFragment_to_listProdFragment)
         }
 
         return binding.root

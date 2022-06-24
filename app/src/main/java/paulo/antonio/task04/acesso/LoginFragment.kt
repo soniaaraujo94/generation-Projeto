@@ -1,4 +1,4 @@
-package paulo.antonio.task04
+package paulo.antonio.task04.acesso
 
 import android.graphics.Color
 import android.os.Bundle
@@ -11,6 +11,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import paulo.antonio.task04.R
 import paulo.antonio.task04.databinding.FragmentLoginBinding
 
 
@@ -22,7 +23,7 @@ class LoginFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentLoginBinding.inflate(LayoutInflater.from(context),
             container, false)
@@ -64,7 +65,7 @@ class LoginFragment : Fragment() {
             }
         }
     }*/
-    private fun loginAdmin(email: String): Boolean {
+    private fun loginAdmin(): Boolean {
         val admin = Firebase.auth.currentUser
         val adminApp = "appcestafeira@gmail.com"
         val valide = true
@@ -95,9 +96,9 @@ class LoginFragment : Fragment() {
             snackbar.setBackgroundTint(Color.RED)
             snackbar.show()
         }else{
-            auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener { autentificacao ->
-                if (loginAdmin(email)){
-                    loginAdmin(email)
+            auth.signInWithEmailAndPassword(email, senha).addOnCompleteListener {
+                if (loginAdmin()){
+                    loginAdmin()
                 }
             }.addOnFailureListener {
                 val snackbar = Snackbar.make(view, "Erro ao fazer login!", Snackbar.LENGTH_SHORT)

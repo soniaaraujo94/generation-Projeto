@@ -1,4 +1,4 @@
-package paulo.antonio.task04
+package paulo.antonio.task04.acesso.admin
 
 import android.app.AlertDialog
 import android.graphics.Color
@@ -16,15 +16,20 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
+import paulo.antonio.task04.MainViewModel
+import paulo.antonio.task04.R
+import paulo.antonio.task04.databinding.FragmentAdminBinding
 import paulo.antonio.task04.databinding.FragmentCadastrarProdutosBinding
 import paulo.antonio.task04.model.Categoria
 import paulo.antonio.task04.model.Produtos
 
-class CadastrarProdutosFragment : Fragment() {
+class AdminCadProduFragment : Fragment() {
     private lateinit var binding: FragmentCadastrarProdutosBinding
     private val mainViewModel: MainViewModel by activityViewModels()
     private var urlImg = ""
     private var categoriaSelecionada = 0L
+    private var produtoSelecionado: Produtos? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +40,7 @@ class CadastrarProdutosFragment : Fragment() {
         binding = FragmentCadastrarProdutosBinding.inflate(layoutInflater, container, false)
 
         mainViewModel.listCategoria()
+        carregarDados()
 
         mainViewModel.myCategoriaResponse.observe(viewLifecycleOwner){
                 response -> Log.d("Requisicao", response.body().toString())
@@ -42,7 +48,7 @@ class CadastrarProdutosFragment : Fragment() {
         }
 
         binding.btnVoltar.setOnClickListener {
-            findNavController().navigate(R.id.action_cadastrarProdutosFragment_to_adminProdutoFragment)
+            findNavController().navigate(R.id.action_cadastrarProdutosFragment_to_adminFragment)
         }
 
         binding.inputImg.setOnClickListener {
@@ -53,8 +59,11 @@ class CadastrarProdutosFragment : Fragment() {
             inserirDados()
         }
 
+
         return binding.root
     }
+
+
 
     private fun inserirDados() {
         val imgProd = urlImg
@@ -65,12 +74,33 @@ class CadastrarProdutosFragment : Fragment() {
         val categoria = Categoria(categoriaSelecionada, null, null)
 
         if (validarCampos(nomeProd, pesoProd, valorProd, descProd)) {
-            val produtos = Produtos(0, nomeProd, descProd, imgProd, pesoProd, valorProd, categoria)
-            mainViewModel.addProduto(produtos)
-            Toast.makeText(context, "Produto adicionado", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_cadastrarProdutosFragment_to_adminProdutoFragment)
+            val salvar: String
+
+            if(produtoSelecionado != null){
+                salvar ="Produto Atualizado"
+                val produtos = Produtos(produtoSelecionado?.id!!, nomeProd, descProd, imgProd, pesoProd, valorProd, categoria)
+                mainViewModel.updateTarefa(produtos)
+            }else{
+                salvar = "Produto Criado"
+                val produtos = Produtos(0, nomeProd, descProd, imgProd, pesoProd, valorProd, categoria)
+                mainViewModel.addProduto(produtos)}
+
+            Toast.makeText(context, salvar, Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_cadastrarProdutosFragment_to_listProdFragment)
         } else {
             Toast.makeText(context, "Verifique os campos", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun carregarDados(){
+        produtoSelecionado = mainViewModel.produtoSelecionado
+        if (produtoSelecionado != null){
+
+            Glide.with(this).load(produtoSelecionado?.imagem).placeholder(R.drawable.bg_produto).into(binding.inputImg)
+            binding.inputProduto.setText(produtoSelecionado?.nomeMarca)
+            binding.inputPeso.setText(produtoSelecionado?.quantidade)
+            binding.inputValor.setText(produtoSelecionado?.valor)
+            binding.inputDescricao.setText(produtoSelecionado?.descricao)
         }
     }
 
